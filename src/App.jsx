@@ -21,6 +21,7 @@ import NewsContact from './components/news/NewsContact';
 import NewsFooter from './components/news/NewsFooter';
 import NewsCaseFile from './components/news/NewsCaseFile';
 import NewsCertifications from './components/news/NewsCertifications';
+import NewsNotFound from './components/news/NewsNotFound';
 
 const Home = ({ introDone, onIntroDone }) => (
   <>
@@ -159,6 +160,14 @@ const RouteConfig = ({ introDone, onIntroDone }) => (
       element={
         <SubPage>
           <NewsCertifications />
+        </SubPage>
+      }
+    />
+    <Route
+      path="*"
+      element={
+        <SubPage>
+          <NewsNotFound />
         </SubPage>
       }
     />

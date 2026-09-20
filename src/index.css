@@ -1,0 +1,259 @@
+/* Google Fonts are loaded via <link> tags in index.html for non-blocking delivery */
+
+:root {
+  --paper: #f4f1e9;
+  --paper-warm: #efeadd;
+  --paper-deep: #e7e0cf;
+  --paper-bright: #fbfaf5;
+  --ink: #16140f;
+  --ink-soft: #45413a;
+  --ink-faint: #8b8678;
+  --stamp: #a6382c;
+  --stamp-bright: #c9503f;
+  --rule: rgba(22, 20, 15, 0.25);
+  --font-display: 'Libre Caslon Display', 'Times New Roman', Georgia, serif;
+  --font-text: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+  --font-gothic: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-text);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--stamp);
+  color: var(--paper-bright);
+}
+
+body::before {
+  content: '';
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(0, 0, 0, 0.035), transparent 60%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(22, 20, 15, 0.012) 0 2px,
+      transparent 2px 4px
+    );
+  position: fixed;
+  inset: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--ink);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+section,
+.container,
+.brut-box,
+.brut-btn {
+  min-width: 0;
+}
+
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Skip-to-content link for keyboard accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-gothic);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll-reveal system (mirrors the reference site's rv-* utilities).
+   Only active under .js-motion, so content is never hidden without JS.
+   ------------------------------------------------------------------------- */
+
+.js-motion .rv-settle {
+  transition-property: opacity, transform, background-color;
+  transition-duration: 0.55s, 0.55s, 0.15s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), ease;
+  transition-delay: var(--rv-delay, 0s), var(--rv-delay, 0s), 0s;
+}
+
+.js-motion .rv-settle:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.js-motion .rv-rule {
+  transform-origin: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--rv-delay, 0s);
+}
+
+.js-motion .rv-rule:not(.is-revealed) {
+  transform: scaleX(0);
+}
+
+.js-motion .rv-develop {
+  transition: opacity 0.7s ease-out, filter 0.7s ease-out;
+  transition-delay: var(--rv-delay, 0s);
+}
+
+.js-motion .rv-develop:not(.is-revealed) {
+  opacity: 0;
+  filter: blur(5px) contrast(1.35);
+}
+
+.rv .rv-word {
+  display: inline-block;
+}
+
+.js-motion .rv .rv-word {
+  transition: opacity 0.45s ease-out, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--rv-delay, 0s) + var(--i, 0) * 40ms);
+}
+
+.js-motion .rv:not(.is-revealed) .rv-word {
+  opacity: 0;
+  transform: translateY(0.35em);
+}
+
+.js-motion .rv .rv-fade {
+  transition: opacity 0.5s ease-out;
+  transition-delay: calc(var(--rv-delay, 0s) + 0.12s);
+}
+
+.js-motion .rv:not(.is-revealed) .rv-fade {
+  opacity: 0;
+}
+
+.rv .rv-sketch {
+  stroke-dasharray: 1;
+}
+
+.js-motion .rv .rv-sketch {
+  transition: stroke-dashoffset 0.6s ease-out;
+  transition-delay: calc(var(--rv-delay, 0s) + 0.35s);
+}
+
+.js-motion .rv:not(.is-revealed) .rv-sketch {
+  stroke-dashoffset: 1px;
+}
+
+.rv .rv-stampchild {
+  display: inline-block;
+}
+
+.js-motion .rv .rv-stampchild {
+  transition: opacity 0.12s ease-out, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--rv-delay, 0s);
+}
+
+.js-motion .rv:not(.is-revealed) .rv-stampchild {
+  opacity: 0;
+  transform: scale(1.5) rotate(-6deg);
+}
+
+/* ---------------------------------------------------------------- motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js-motion .rv-settle,
+  .js-motion .rv-rule,
+  .js-motion .rv-develop,
+  .js-motion .rv .rv-word,
+  .js-motion .rv .rv-fade,
+  .js-motion .rv .rv-sketch,
+  .js-motion .rv .rv-stampchild {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .js-motion .rv-settle {
+    transform: none;
+    transition: opacity 0.45s ease;
+  }
+}

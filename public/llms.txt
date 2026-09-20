@@ -1,0 +1,55 @@
+# Aryan Anand — Portfolio
+
+> Personal portfolio of Aryan Anand, an AI/ML Engineer and Full Stack Developer specializing in machine learning systems, scalable web architectures, and intelligent applications.
+
+## About
+
+- Name: Aryan Anand
+- Role: AI/ML Engineer & Full Stack Developer
+- Status: B.Tech CSE (AI/ML) at JUET (July 2024 – June 2028)
+- Location: Bhopal, Madhya Pradesh, India
+- Contact: aryan.anand1806@gmail.com
+
+## Social Profiles
+
+- GitHub: https://github.com/AryanAnand-ux
+- LinkedIn: https://www.linkedin.com/in/aryananand-ux
+
+## Skills & Expertise
+
+- Languages: Java, Python, C++, C, SQL, JavaScript, TypeScript
+- Frontend: React, Next.js, HTML5, CSS3
+- Backend: FastAPI, Node.js, REST APIs, API Development, OOP
+- Databases: PostgreSQL, MySQL, MongoDB, SQLite, Redis
+- Core CS: Data Structures & Algorithms, OOP, AI & ML, Computer Networks, DBMS
+- Tools & Cloud: AWS, Docker, Linux, Git, GitHub, Power BI, Pandas, NumPy, Scikit-learn
+
+## Projects
+
+- AI-Parametric CAD Workbench: Full-stack tool turning natural-language descriptions into interactive 3D CAD models (FastAPI, React, Three.js, Gemini API, Docker)
+- JUET Nexus: Proxy dashboard for university ERP with low-latency data access (TypeScript, Next.js, Fastify, Redis)
+- Loom2: AI-powered digital wardrobe with weather-aware outfit recommendations (React, Node.js, AI APIs)
+- GraphQL vs REST Benchmark: Research paper benchmarking API performance and developer experience
+- File Converter: Client-side PDF/image toolkit with in-browser processing (Next.js, TypeScript, Tailwind CSS)
+- HY Kero Flash Point Predictor: Real-time ML application for IOCL with L1-regularized regression (Python, FastAPI, React, SQLite, Docker)
+- Global Cybersecurity Breach Analytics: Power BI dashboard analyzing 365 global incidents
+
+## Experience
+
+- AI/ML Intern at Indian Oil Corporation Limited (IOCL), Mathura (June 2026 – July 2026)
+- Power BI Intern at Microsoft Elevate AICTE Program (February 2026 – March 2026)
+
+## Achievements
+
+- Winner, Elite Hack 1.0 hackathon (1st among 100+ teams)
+- Finalist, i.mobilothon 5.0
+- Oracle Certified AI Foundations Associate (2025)
+- Microsoft Elevate AICTE Alumnus (cloud computing & AI)
+
+## Education
+
+- B.Tech in Computer Science and Engineering (AI/ML), JUET — GPA: 8.57/10
+
+## Site Structure
+
+This is a single-page portfolio. Sections: Hero, Skills, Projects, Experience, Beyond Code, Education, Certifications, Contact.

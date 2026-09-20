@@ -616,6 +616,18 @@ body.is-locked {
   background: var(--paper-bright);
   padding: 8px 8px 0;
   box-shadow: 0 2px 14px rgba(22, 20, 15, 0.14);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.nw-group:hover .nw-photo-frame,
+.nw-group:focus-within .nw-photo-frame {
+  transform: translateY(-5px) rotate(-0.6deg);
+  box-shadow: 0 14px 30px rgba(22, 20, 15, 0.22);
+}
+
+.nw-group:hover .nw-photo-frame .nw-shot-img,
+.nw-group:focus-within .nw-photo-frame .nw-shot-img {
+  transform: scale(1.06);
 }
 
 .nw-tape {
@@ -636,6 +648,12 @@ body.is-locked {
   border: 1px solid rgba(22, 20, 15, 0.4);
   background: var(--paper);
   aspect-ratio: 4 / 3;
+  transition: border-color 0.35s ease;
+}
+
+.nw-group:hover .nw-photo-frame-media,
+.nw-group:focus-within .nw-photo-frame-media {
+  border-color: rgba(166, 56, 44, 0.55);
 }
 
 .nw-shot-img {
@@ -2389,6 +2407,11 @@ body.is-locked {
     transform: none;
   }
 
+  .nw-group .nw-photo-frame {
+    transform: none;
+    box-shadow: none;
+  }
+
   .nw-group .nw-halftone {
     opacity: 0.55;
   }
@@ -2397,7 +2420,8 @@ body.is-locked {
 @media (prefers-reduced-motion: reduce) {
   .nw-group .nw-shot,
   .nw-group .nw-halftone,
-  .nw-group .nw-confirmed-stamp {
+  .nw-group .nw-confirmed-stamp,
+  .nw-group .nw-photo-frame {
     transition: none !important;
     transform: none !important;
   }

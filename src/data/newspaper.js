@@ -3,7 +3,7 @@
 
 export const SITE = {
   origin: 'https://portfolio2-q1z5b488y-aryans-projects-144bd52a.vercel.app',
-  resume: '/resume_5th_sem_v5.pdf',
+  resume: '/Resume_5th_sem.pdf',
   defaultTitle: 'Aryan Anand — The Personal Record of a Full-Stack Developer',
 };
 
@@ -45,7 +45,7 @@ export const heroContent = {
     { value: '3rd', label: 'Year · B.Tech CSE (AI/ML)' },
     { value: '2x', label: 'Hackathon podiums this year' },
   ],
-  photoAttribution: 'the subject',
+  photoAttribution: 'the subject, in his natural habitat',
 };
 
 export const stackRows = [

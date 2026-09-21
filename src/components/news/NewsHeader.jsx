@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'Contact', to: '/#contact' },
 ];
 
-const NewsHeader = () => {
+const NewsHeader = ({ compact = false }) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -25,34 +25,57 @@ const NewsHeader = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const onKey = (event) => {
+      if (event.key === 'Escape') close();
+    };
+    const onResize = () => {
+      if (window.matchMedia('(min-width: 940px)').matches) close();
+    };
+
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
+    document.body.classList.add('is-locked');
+
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onResize);
+      document.body.classList.remove('is-locked');
+    };
+  }, [open]);
+
   return (
     <>
-      <header className="nw-header" id="top">
-        <div className="nw-container">
-          <div className="nw-meta-strip">
-            <span>{newspaper.city}</span>
-            <span className="nw-meta-center">{newspaper.edition}</span>
-            <span className="nw-meta-right">{newspaper.established}</span>
-          </div>
+      {!compact && (
+        <header className="nw-header" id="top">
+          <div className="nw-container">
+            <div className="nw-meta-strip">
+              <span>{newspaper.city}</span>
+              <span className="nw-meta-center">{newspaper.edition}</span>
+              <span className="nw-meta-right">{newspaper.established}</span>
+            </div>
 
-          <div className="nw-masthead">
-            <h1>{newspaper.mastheadName}</h1>
-            <p className="nw-masthead-tagline">{newspaper.tagline}</p>
-          </div>
+            <div className="nw-masthead">
+              <p className="nw-masthead-name">{newspaper.mastheadName}</p>
+              <p className="nw-masthead-tagline">{newspaper.tagline}</p>
+            </div>
 
-          <div className="nw-issue-ledger">
-            <span>{newspaper.issueDate}</span>
-            <span className="nw-dot" aria-hidden="true" />
-            <span>{newspaper.volume}</span>
-            <span className="nw-dot" aria-hidden="true" />
-            <span>{newspaper.contents}</span>
-            <span className="nw-dot" aria-hidden="true" />
-            <span>{newspaper.price}</span>
+            <div className="nw-issue-ledger">
+              <span>{newspaper.issueDate}</span>
+              <span className="nw-dot" aria-hidden="true" />
+              <span>{newspaper.volume}</span>
+              <span className="nw-dot" aria-hidden="true" />
+              <span>{newspaper.contents}</span>
+              <span className="nw-dot" aria-hidden="true" />
+              <span>{newspaper.price}</span>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      )}
 
-      <div className={`nw-nav-wrap ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className={`nw-nav-wrap ${scrolled || compact ? 'is-scrolled' : ''}`}>
         <div className="nw-container">
           <nav className="nw-nav" aria-label="Primary">
             <Link className="nw-nav-brand" to="/" onClick={close}>
@@ -76,6 +99,7 @@ const NewsHeader = () => {
                 type="button"
                 aria-label={open ? 'Close menu' : 'Open menu'}
                 aria-expanded={open}
+                aria-controls="mobile-nav"
                 onClick={() => setOpen((v) => !v)}
               >
                 <span />
@@ -85,7 +109,12 @@ const NewsHeader = () => {
             </div>
           </nav>
 
-          <div className={`nw-mobile-panel ${open ? 'is-open' : ''}`} aria-hidden={!open}>
+          <div
+            id="mobile-nav"
+            className={`nw-mobile-panel ${open ? 'is-open' : ''}`}
+            aria-hidden={!open}
+            inert={!open ? true : undefined}
+          >
             <div className="nw-mobile-links">
               {NAV_LINKS.map((link) => (
                 <Link className="nw-mobile-link" to={link.to} key={link.to} onClick={close}>

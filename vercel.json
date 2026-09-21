@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/((?!cert/|assets/|.*\\.pdf|avatar\\.png|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt).*)",
+      "source": "/((?!cert/|assets/|projects/|.*\\.pdf|avatar\\.(png|webp)|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt).*)",
       "destination": "/index.html"
     }
   ],
@@ -11,7 +11,7 @@
       "headers": [
         {
           "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
+          "value": "DENY"
         },
         {
           "key": "X-Content-Type-Options",
@@ -50,7 +50,16 @@
       ]
     },
     {
-      "source": "/(avatar\\.png|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt)",
+      "source": "/projects/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(avatar\\.(png|webp)|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt)",
       "headers": [
         {
           "key": "Cache-Control",

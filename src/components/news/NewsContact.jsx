@@ -7,10 +7,13 @@ const NewsContact = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const subject = encodeURIComponent(data.get('subject').trim() || 'New letter from the desk');
-    const body = encodeURIComponent(
-      `Name: ${data.get('name').trim()}\nEmail: ${data.get('email').trim()}\n\n${data.get('story').trim()}`
+    const name = String(data.get('name') ?? '').trim();
+    const email = String(data.get('email') ?? '').trim();
+    const story = String(data.get('story') ?? '').trim();
+    const subject = encodeURIComponent(
+      String(data.get('subject') ?? '').trim() || 'New letter from the desk'
     );
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${story}`);
     window.location.href = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
   };
 

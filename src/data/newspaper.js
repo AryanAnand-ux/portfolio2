@@ -1,12 +1,25 @@
 // Curated editorial content for the newspaper broadsheet build.
 // Content is Aryan's own — presented in the reference case-file style.
 
+export const SITE = {
+  origin: 'https://portfolio2-q1z5b488y-aryans-projects-144bd52a.vercel.app',
+  resume: '/resume_5th_sem_v5.pdf',
+  defaultTitle: 'Aryan Anand — The Personal Record of a Full-Stack Developer',
+};
+
+const issueDate = new Date().toLocaleDateString('en-GB', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
 export const newspaper = {
   mastheadName: 'Aryan Anand',
   tagline: 'The Personal Record of a B.Tech CSE (AI/ML) Student',
   edition: 'The Investigation Edition',
   established: 'Est. 2024',
-  issueDate: 'Sunday 20 September 2026',
+  issueDate,
   volume: 'Vol. III',
   contents: 'Selected Works & Papers',
   price: 'Price: One Chai',
@@ -148,11 +161,11 @@ export const contactInfo = {
 export const footerContent = {
   bio: 'A third-year B.Tech CSE (AI/ML) student at JUET — a software & research intern at Indian Oil Corporation Limited, a Microsoft Elevate alumnus, and a two-time hackathon podium finisher in 2026. This broadsheet is hand-set in Caslon and Franklin.',
   sections: [
-    { label: 'Selected Works', href: '#work' },
-    { label: 'The Stack', href: '#stack' },
-    { label: 'The Career Ledger', href: '#career' },
+    { label: 'Selected Works', href: '/#work' },
+    { label: 'The Stack', href: '/#stack' },
+    { label: 'The Career Ledger', href: '/#career' },
     { label: 'Credentials', href: '/certifications' },
-    { label: 'Letters & Commissions', href: '#contact' },
+    { label: 'Letters & Commissions', href: '/#contact' },
   ],
   copyright: '© 2026 The Aryan Anand Times · All rights reserved · Printed in Bhopal',
 };

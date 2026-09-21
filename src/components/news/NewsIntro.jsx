@@ -120,11 +120,24 @@ const NewsIntro = ({ onDone }) => {
       lastY = event.clientY;
     };
 
+    const skip = () => {
+      if (foundRef.current) return;
+      foundRef.current = true;
+      document.body.classList.remove('is-locked');
+      doneRef.current?.();
+    };
+
+    const onKey = (event) => {
+      if (event.key === 'Escape') skip();
+    };
+
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('pointerdown', onPointerDown, { passive: true });
+    window.addEventListener('keydown', onKey);
     return () => {
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('keydown', onKey);
       if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
       timers.forEach((t) => window.clearTimeout(t));
       document.body.classList.remove('is-locked');

@@ -1,4 +1,5 @@
-import { newspaper, heroContent } from '../../data/newspaper';
+import { Link } from 'react-router-dom';
+import { newspaper, heroContent, SITE } from '../../data/newspaper';
 
 const NewsHero = () => (
   <section className="nw-hero-sec">
@@ -24,12 +25,17 @@ const NewsHero = () => (
             By <b>The Investigation Desk</b> &nbsp;·&nbsp; {heroContent.byline}
           </p>
           <div className="nw-hero-ctas rv rv-settle" style={{ '--rv-delay': '260ms' }}>
-            <a className="nw-btn nw-btn--lg nw-btn--solid" href="/resume_5th_sem_v5.pdf">
+            <a
+              className="nw-btn nw-btn--lg nw-btn--solid"
+              href={SITE.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Resume &rarr;
             </a>
-            <a className="nw-btn nw-btn--lg nw-btn--ghost" href="#contact">
+            <Link className="nw-btn nw-btn--lg nw-btn--ghost" to="/#contact">
               Get in touch
-            </a>
+            </Link>
           </div>
 
           <div className="nw-stats rv rv-settle" style={{ '--rv-delay': '320ms' }}>
@@ -45,7 +51,14 @@ const NewsHero = () => (
         <div className="nw-hero-photo">
           <div className="rv rv-develop" style={{ '--rv-delay': '180ms' }}>
             <div className="nw-photo-card">
-              <img src="/avatar.png" alt="Aryan Anand — the subject, in his natural habitat" />
+              <img
+                src="/avatar.webp"
+                alt="Aryan Anand — the subject, in his natural habitat"
+                width="900"
+                height="900"
+                fetchPriority="high"
+                decoding="async"
+              />
             </div>
           </div>
           <p className="nw-hero-caption rv rv-settle" style={{ '--rv-delay': '240ms' }}>

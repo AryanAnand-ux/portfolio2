@@ -1,17 +1,7 @@
 import { Link } from 'react-router-dom';
-import { projectsData } from '../../data/projects';
+import { projectsData, exhibitLetter, hostOf } from '../../data/projects';
 import { ArrowUpRight } from 'lucide-react';
 import { Words } from './reveal';
-
-const EXHIBIT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-
-const hostOf = (url) => {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '');
-  } catch {
-    return 'github.com/AryanAnand-ux';
-  }
-};
 
 const clientFor = (project) => {
   if (project.projectLink) return `Shipped at ${hostOf(project.projectLink)}`;
@@ -48,6 +38,7 @@ const Shot = ({ project }) =>
       src={project.thumb}
       alt={`${project.title} interface`}
       loading="lazy"
+      decoding="async"
     />
   ) : (
     <div className="nw-shot">
@@ -95,7 +86,9 @@ const FeatureExhibit = ({ project, letter }) => (
       <p className="nw-exdesc">{project.description}</p>
       <Tags tech={project.tech} />
       <div className="nw-exfoot">
-        <span className="nw-exdate">2026 &middot; {project.caseFile?.role ?? 'Solo'}</span>
+        <span className="nw-exdate">
+          {project.caseFile?.entered ?? '2026'} &middot; {project.caseFile?.role ?? 'Solo'}
+        </span>
         <Link className="nw-openfile" to={`/case-files/${project.id}`}>
           Open case file
           <span className="nw-openfile-arrow">&rarr;</span>
@@ -129,7 +122,9 @@ const ExhibitCard = ({ project, letter, delay = 0 }) => (
     <p className="nw-exdesc">{project.description}</p>
     <Tags tech={project.tech} />
     <div className="nw-exfoot">
-      <span className="nw-exdate">2026 &middot; {project.caseFile?.role ?? 'Solo'}</span>
+      <span className="nw-exdate">
+        {project.caseFile?.entered ?? '2026'} &middot; {project.caseFile?.role ?? 'Solo'}
+      </span>
       <Link className="nw-openfile" to={`/case-files/${project.id}`}>
         Open case file
         <span className="nw-openfile-arrow">&rarr;</span>
@@ -152,7 +147,7 @@ const ExhibitCard = ({ project, letter, delay = 0 }) => (
 const NewsWorks = () => {
   const featured = projectsData[0];
   const cards = projectsData.slice(1);
-  const lastLetter = EXHIBIT_LETTERS[projectsData.length - 1] ?? 'A';
+  const lastLetter = exhibitLetter(projectsData[projectsData.length - 1]?.id);
 
   return (
     <section id="work" className="nw-sec">
@@ -172,7 +167,7 @@ const NewsWorks = () => {
           <div className="nw-section-rule rv rv-rule" aria-hidden="true" />
         </div>
 
-        {featured && <FeatureExhibit project={featured} letter="A" />}
+        {featured && <FeatureExhibit project={featured} letter={exhibitLetter(featured.id)} />}
 
         <div className="nw-exgrid-holder">
           <div className="nw-exgrid">
@@ -180,7 +175,7 @@ const NewsWorks = () => {
               <ExhibitCard
                 key={project.id}
                 project={project}
-                letter={EXHIBIT_LETTERS[index + 1]}
+                letter={exhibitLetter(project.id)}
                 delay={index * 60}
               />
             ))}

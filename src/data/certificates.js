@@ -4,7 +4,7 @@ export const certificatesData = [
     title: 'IOCL Summer Internship',
     issuer: 'Indian Oil Corporation Limited, Mathura',
     date: 'June 2026 - July 2026',
-    thumbnail: '/cert/thumbnails/iocl.png',
+    thumbnail: '/cert/thumbnails/iocl.webp',
     file: '/cert/iocl.pdf',
   },
   {
@@ -12,7 +12,7 @@ export const certificatesData = [
     title: 'Power BI Internship',
     issuer: 'Microsoft Elevate AICTE Program',
     date: 'Feb 2026 - Mar 2026',
-    thumbnail: '/cert/thumbnails/microsoft_elevate.png',
+    thumbnail: '/cert/thumbnails/microsoft_elevate.webp',
     file: '/cert/microsoft_elevate.pdf',
   },
   {
@@ -20,7 +20,7 @@ export const certificatesData = [
     title: 'Oracle Certified AI Foundations Associate',
     issuer: 'Oracle',
     date: '2025',
-    thumbnail: '/cert/thumbnails/oracle_ai_cert.png',
+    thumbnail: '/cert/thumbnails/oracle_ai_cert.webp',
     file: '/cert/oracle_ai_cert.pdf',
   },
   {
@@ -28,7 +28,7 @@ export const certificatesData = [
     title: 'AI for Beginners',
     issuer: 'Online Course',
     date: '2026',
-    thumbnail: '/cert/thumbnails/ai_for_beginners.png',
+    thumbnail: '/cert/thumbnails/ai_for_beginners.webp',
     file: '/cert/ai_for_beginners.pdf',
   },
   {
@@ -36,7 +36,7 @@ export const certificatesData = [
     title: 'Hero Campus Certificate',
     issuer: 'Hero Campus',
     date: '2026',
-    thumbnail: '/cert/thumbnails/Hero_campus_cert.png',
+    thumbnail: '/cert/thumbnails/Hero_campus_cert.webp',
     file: '/cert/Hero_campus_cert.pdf',
   },
   {
@@ -44,7 +44,7 @@ export const certificatesData = [
     title: 'Root Access 2026',
     issuer: 'Security Event',
     date: '2026',
-    thumbnail: '/cert/thumbnails/rootacces2026Cert.png',
+    thumbnail: '/cert/thumbnails/rootacces2026Cert.webp',
     file: '/cert/rootacces2026Cert.pdf',
   },
   {
@@ -52,7 +52,7 @@ export const certificatesData = [
     title: 'Tata Crucible Certificate',
     issuer: 'Tata',
     date: '2026',
-    thumbnail: '/cert/thumbnails/Tata_crucable_cert.png',
+    thumbnail: '/cert/thumbnails/Tata_crucable_cert.webp',
     file: '/cert/Tata_crucable_cert.pdf',
   },
   {
@@ -60,7 +60,7 @@ export const certificatesData = [
     title: 'Young Turk Round 1',
     issuer: 'Young Turk',
     date: '2026',
-    thumbnail: '/cert/thumbnails/young_turk_round1_cert.png',
+    thumbnail: '/cert/thumbnails/young_turk_round1_cert.webp',
     file: '/cert/young_turk_round1_cert.pdf',
   },
 ];

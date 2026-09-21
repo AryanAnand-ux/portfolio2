@@ -46,14 +46,6 @@ export const heroContent = {
     { value: 'X2', label: 'Hackathon podiums this year' },
   ],
   photoAttribution: 'the subject',
-  quickIntel: [
-    { label: 'CGPA 8.57', value: 'Academic record', sub: 'B.Tech CSE (AI/ML) · JUET · 3rd year' },
-    { label: 'IST', value: 'Bhopal', sub: 'Remote-friendly, worldwide' },
-    { label: 'Open to', value: 'Internships & hackathons', sub: 'Software, research, and weekend builds' },
-    { label: 'Graduating', value: 'June 2028', sub: 'Currently in the 5th semester' },
-  ],
-  dispatchNote:
-    'Open to internships, freelance builds, and collaborative hackathon projects — typically answering within 24 hours.',
 };
 
 export const stackRows = [
@@ -122,7 +114,7 @@ export const achievements = [
     year: '2026',
     title: 'Elite Hack 1.0',
     honor: 'Winner',
-    blurb: 'First place among 100+ teams.', 
+    blurb: 'First place among 100+ teams.',
   },
   {
     year: '2026',

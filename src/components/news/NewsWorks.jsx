@@ -75,7 +75,7 @@ const PhotoFrame = ({ project, letter, mediaClass = '', delay = 0 }) => (
 );
 
 const FeatureExhibit = ({ project, letter }) => (
-  <article id={`exhibit-${project.id}`} className="nw-exfeature group">
+  <article id={`exhibit-${project.id}`} className="nw-exfeature nw-group">
     <div className="nw-exfeature-media">
       <PhotoFrame project={project} letter={letter} />
     </div>
@@ -112,7 +112,7 @@ const FeatureExhibit = ({ project, letter }) => (
 const ExhibitCard = ({ project, letter, delay = 0 }) => (
   <article
     id={`exhibit-${project.id}`}
-    className="nw-excard rv rv-settle group"
+    className="nw-excard rv rv-settle nw-group"
     style={{ '--rv-delay': `${delay}ms` }}
   >
     <span className="nw-exhead">Exhibit {letter}</span>

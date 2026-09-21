@@ -30,20 +30,20 @@ export const newspaper = {
 
 export const heroContent = {
   caseMarker: 'Field Report No. 03 — Findings Published',
-  headlineLead: 'A third-year engineering student who likes building things — ',
-  headlineEm: 'front to back.',
+  headlineLead: 'Full-stack builds, applied AI, and product instincts — ',
+  headlineEm: 'from idea to shipped.',
   leadParagraph:
-    'Turned up on record: Aryan Anand is a B.Tech CSE (AI/ML) student in his third year at JUET — a software & research intern at Indian Oil Corporation Limited, and fresh off a Power BI internship with Microsoft Elevate.',
-  byline: 'Reporting from Bhopal, between JUET and IOCL',
+    'On record: Aryan Anand is a third-year B.Tech CSE (AI/ML) student at JUET, building React interfaces, FastAPI backends, and machine-learning systems shaped by real internship work at Indian Oil Corporation Limited.',
+  byline: 'Reporting from Bhopal',
   dossierParagraphs: [
-    'He enjoys the whole process — going from a rough idea to something that ships. His main stack is Python and React on the front, with FastAPI underneath and Vercel for deploys, and a CGPA of 8.57 to keep the record honest.',
-    'When a build calls for it, he reaches for the classics too — Node.js, Next.js, MongoDB, Redis and raw SQL. And through his time at IOCL, he works on applied machine learning against live industrial data, while leading the IETE Student\u2019s Forum on campus.',
+    'He enjoys the full build cycle: shaping a rough idea, turning it into software, and shipping it where people can actually use it. His regular stack runs from Python and React to FastAPI and Vercel, with a CGPA of 8.57 to keep the record honest.',
+    'When the brief calls for it, he reaches for Node.js, Next.js, MongoDB, Redis and SQL as well. At IOCL, he works on applied machine learning against live industrial data; on campus, he helps lead the IETE Student\u2019s Forum.',
   ],
   stats: [
     { value: 'No. 07', label: 'Exhibits on file' },
     { value: '8.57', label: 'CGPA · JUET' },
     { value: '3rd', label: 'Year · B.Tech CSE (AI/ML)' },
-    { value: 'X2', label: 'Hackathon podiums this year' },
+    { value: '2x', label: 'Hackathon podiums this year' },
   ],
   photoAttribution: 'the subject',
 };
@@ -74,21 +74,21 @@ export const ledger = [
     org: 'Indian Oil Corporation Limited',
     role: 'AI/ML Intern',
     blurb:
-      'Last seen building a real-time full-stack ML application that predicts Heavy Kerosene Flash Points from 41 live DCS sensor inputs — an L1-regularised regression pipeline with a secure AI chatbot on duty. Deliverable in production.',
+      'Built a production-facing full-stack ML application that predicts Heavy Kerosene Flash Points from 41 live DCS sensor inputs, backed by an L1-regularised regression pipeline and a secure AI chatbot.',
   },
   {
     period: 'Feb 2026 — Mar 2026',
     org: 'Microsoft Elevate · AICTE',
     role: 'Power BI Intern',
     blurb:
-      'Observed analysing 365 global cybersecurity incidents into a Power BI dashboard — breach trends, attack vectors and incident patterns turned into clear, actionable intelligence. Alumnus on record.',
+      'Analysed 365 global cybersecurity incidents in Power BI, turning breach trends, attack vectors and incident patterns into clear, decision-ready intelligence.',
   },
   {
     period: 'Jul 2024 — Jun 2028',
     org: 'JUET',
     role: 'B.Tech CSE (AI/ML), 3rd Year',
     blurb:
-      'First recorded appearance. Six-semester engineer keeping a GPA of 8.57 while studying DSA, DBMS, computer networks and artificial intelligence — before the code goes to production.',
+      'Third-year engineering student with an 8.57 CGPA, studying DSA, DBMS, computer networks and artificial intelligence while building production-minded side projects.',
   },
 ];
 
@@ -98,14 +98,14 @@ export const beyondCode = [
     org: 'IETE Student\u2019s Forum · JUET',
     role: 'Joint Secretary',
     blurb:
-      'Coordinates technical events and student activities as part of the student leadership team — part of the reason the subject keeps an 8.57 CGPA in parallel.',
+      'Coordinates technical events and student activities as part of the campus leadership team, balancing organisational work with academics and project builds.',
   },
   {
     period: 'Jun 2024 — Present',
     org: 'Developer Student Communities · JUET',
     role: 'Community Lead, VR/AR/MR',
     blurb:
-      'Led technical initiatives and organised the CodeSrijan Hackathon — one of two hackathon podiums clocked this year.',
+      'Leads technical initiatives around immersive technology and helped organise CodeSrijan, adding community work to the engineering record.',
   },
 ];
 
@@ -120,7 +120,7 @@ export const achievements = [
     year: '2026',
     title: 'i.mobilothon 5.0',
     honor: 'Finalist',
-    blurb: 'Racing in Hyundai\u2019s national hackathon.',
+    blurb: 'Finalist in Hyundai\u2019s national mobility hackathon.',
   },
   {
     year: '2025',
@@ -132,7 +132,7 @@ export const achievements = [
     year: '2026',
     title: 'Microsoft Elevate · AICTE',
     honor: 'Alumnus',
-    blurb: 'Cloud computing and AI program, completed.',
+    blurb: 'Completed cloud computing and AI training through the program.',
   },
 ];
 
@@ -140,10 +140,10 @@ export const contactInfo = {
   email: 'aryan.anand1806@gmail.com',
   phone: '+91-8922959085',
   deskCity: 'Bhopal, MP, India',
-  deskNote: 'IST · working with teams worldwide, remote-first.',
-  availability: 'Open to internships & freelance',
+  deskNote: 'IST · available for remote-first work with teams worldwide.',
+  availability: 'Open to internships and freelance builds',
   availabilityNote:
-    '3rd-year B.Tech CSE (AI/ML) — taking on internships, freelance builds and hackathon collabs while the semester permits.',
+    'Third-year B.Tech CSE (AI/ML) student taking on internships, freelance builds and hackathon collaborations while the semester permits.',
   github: 'https://github.com/AryanAnand-ux',
   linkedin: 'https://www.linkedin.com/in/aryananand-ux',
   replyNote: 'Usually replies within 24 hours',
@@ -151,7 +151,7 @@ export const contactInfo = {
 };
 
 export const footerContent = {
-  bio: 'A third-year B.Tech CSE (AI/ML) student at JUET — a software & research intern at Indian Oil Corporation Limited, a Microsoft Elevate alumnus, and a two-time hackathon podium finisher in 2026. This broadsheet is hand-set in Caslon and Franklin.',
+  bio: 'A third-year B.Tech CSE (AI/ML) student at JUET, software and research intern at Indian Oil Corporation Limited, Microsoft Elevate alumnus, and two-time hackathon podium finisher in 2026. This broadsheet is hand-set in Caslon and Franklin.',
   sections: [
     { label: 'Selected Works', href: '/#work' },
     { label: 'The Stack', href: '/#stack' },

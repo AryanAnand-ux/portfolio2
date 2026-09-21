@@ -71,8 +71,8 @@ const NewsCertifications = () => (
             </h1>
           </div>
           <p className="nw-case-lead rv rv-settle" style={{ '--rv-delay': '140ms' }}>
-            The certificates, credentials and hackathon results the subject can actually produce on
-            request — each one verifiable, and most of them accompanied by the paper itself.
+            Certificates, credentials and hackathon results the subject can actually produce on
+            request — each one verifiable, with most accompanied by the paper itself.
           </p>
         </div>
       </div>
@@ -107,7 +107,7 @@ const NewsCertifications = () => (
             <h3 className="nw-cert-dossier-title">Curriculum vitae, on file</h3>
             <p className="nw-cert-dossier-copy">
               The subject&apos;s complete record — education, experience, projects and
-              certifications — filed together and kept current.
+              certifications — filed together in one current document.
             </p>
           </div>
           <a

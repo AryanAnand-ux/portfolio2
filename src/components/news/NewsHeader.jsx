@@ -17,6 +17,10 @@ const NewsHeader = ({ compact = false }) => {
   const [scrolled, setScrolled] = useState(false);
 
   const close = () => setOpen(false);
+  const goHomeTop = () => {
+    close();
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -78,7 +82,7 @@ const NewsHeader = ({ compact = false }) => {
       <div className={`nw-nav-wrap ${scrolled || compact ? 'is-scrolled' : ''}`}>
         <div className="nw-container">
           <nav className="nw-nav" aria-label="Primary">
-            <Link className="nw-nav-brand" to="/" onClick={close}>
+            <Link className="nw-nav-brand" to="/" onClick={goHomeTop}>
               {newspaper.mastheadName}
             </Link>
 

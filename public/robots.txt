@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://portfolio2-q1z5b488y-aryans-projects-144bd52a.vercel.app/sitemap.xml

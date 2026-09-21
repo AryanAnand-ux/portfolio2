@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 import { newspaper } from '../../data/newspaper';
-import { projectsData, relatedBy, hostOf } from '../../data/projects';
+import { relatedBy, hostOf, exhibitLetter } from '../../data/projects';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
-
-const EXHIBIT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
 const Shot = ({ project }) =>
   project.thumb ? (
-    <img className="nw-shot-img" src={project.thumb} alt={`${project.title} interface`} />
+    <img
+      className="nw-shot-img"
+      src={project.thumb}
+      alt={`${project.title} interface`}
+      decoding="async"
+    />
   ) : (
     <div className="nw-cf-shot">
       <span className="nw-cf-shot-title">{project.title}</span>
@@ -22,11 +25,8 @@ const BuildRow = ({ label, value }) => (
   </div>
 );
 
-const NewsCaseFile = ({ slug }) => {
-  const project = projectsData.find((p) => p.id === slug);
-  if (!project) return null;
-
-  const letter = EXHIBIT_LETTERS[projectsData.findIndex((p) => p.id === slug)] ?? 'A';
+const NewsCaseFile = ({ project }) => {
+  const letter = exhibitLetter(project.id);
   const related = relatedBy(project).slice(0, 2);
   const caseFile = project.caseFile;
   const liveUrl = project.projectLink || project.github;

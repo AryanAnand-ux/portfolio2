@@ -41,26 +41,31 @@ const NewsLab = () => (
         <div className="nw-section-rule rv rv-rule" aria-hidden="true" />
       </div>
 
-      <div className="nw-table">
-        <div className="nw-lab-head" aria-hidden="true">
-          <span>Substance</span>
-          <span>Code</span>
-          <span>Detected</span>
-          <span>Finding</span>
+      <div className="nw-table" role="table" aria-label="Tools detected in the lab report">
+        <div className="nw-lab-head" role="row">
+          <span role="columnheader">Substance</span>
+          <span role="columnheader">Code</span>
+          <span role="columnheader">Detected</span>
+          <span role="columnheader">Finding</span>
         </div>
         {stackRows.map((row, index) => (
           <div
             className="nw-lab-row rv rv-settle"
             style={{ '--rv-delay': `${index * 40}ms` }}
             key={row.code}
+            role="row"
           >
-            <span className="nw-lab-substance">
+            <span className="nw-lab-substance" role="cell">
               <span className="nw-lab-substance-name">{row.substance}</span>
               <span className="nw-lab-code-mobile">{row.code}</span>
             </span>
-            <span className="nw-lab-code">{row.code}</span>
-            <span className="nw-lab-detected">{row.detected}</span>
-            <span className="nw-lab-finding">
+            <span className="nw-lab-code" role="cell">
+              {row.code}
+            </span>
+            <span className="nw-lab-detected" role="cell">
+              {row.detected}
+            </span>
+            <span className="nw-lab-finding" role="cell">
               <Finding row={row} />
             </span>
           </div>

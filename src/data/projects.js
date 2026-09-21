@@ -13,12 +13,10 @@ export const projectsData = [
     title: 'AI-Parametric CAD Workbench',
     description:
       'A full-stack tool that turns natural-language part descriptions into interactive 3D CAD models, with live parameter sliders, conversational refinement, and STL/STEP export.',
-    thumb: '/projects/cad.jpeg',
+    thumb: '/projects/cad.webp',
     tech: ['FastAPI', 'React', 'Three.js', 'Gemini API', 'Docker'],
     projectLink: 'https://github.com/AryanAnand-ux',
-    link: null,
     github: 'https://github.com/AryanAnand-ux',
-    layoutClass: 'bento-third',
     caseFile: {
       headline: 'The part desk that speaks the language of engineers',
       lead: 'Describe a part in plain English — a bearing flange, an end cap, a bracket — and out comes an interactive 3D CAD model, editable on the spot with live parameter sliders.',
@@ -48,12 +46,10 @@ export const projectsData = [
     title: 'JUET Nexus',
     description:
       'Proxy dashboard for the university’s ERP system built to speed up data access and give students a smoother, low-latency experience.',
-    thumb: '/projects/nexus.png',
+    thumb: '/projects/nexus.webp',
     tech: ['TypeScript', 'Next.js', 'Fastify', 'Redis'],
     projectLink: 'https://juet-nexus-frontend.vercel.app/',
-    link: null,
     github: 'https://github.com/AryanAnand-ux/JUET-Nexus.git',
-    layoutClass: 'bento-third',
     caseFile: {
       headline: 'The proxy that tamed the campus ERP',
       lead: 'University ERP portals are not known for speed. JUET Nexus sits in front of one, caching and shaping requests so students stop watching spinners.',
@@ -82,12 +78,10 @@ export const projectsData = [
     title: 'Loom2',
     description:
       'AI-powered digital wardrobe app that classifies clothing by type and color and recommends weather-aware outfits through an integrated Stylist AI.',
-    thumb: '/projects/loom.png',
+    thumb: '/projects/loom.webp',
     tech: ['React', 'Node.js', 'AI APIs'],
     projectLink: 'https://loom2-one.vercel.app/',
-    link: null,
     github: 'https://github.com/AryanAnand-ux/Loom2.git',
-    layoutClass: 'bento-third',
     caseFile: {
       headline: 'A wardrobe that already knows the forecast',
       lead: 'Point the camera at a shirt and Loom2 logs it — type, colour, all of it — then a Stylist AI assembles outfits that actually match the weather.',
@@ -117,12 +111,10 @@ export const projectsData = [
     title: 'GraphQL vs. REST Benchmark',
     description:
       'Technical research paper benchmarking GraphQL and REST on API performance, latency, and developer experience.',
-    thumb: '/projects/graphvsrest.png',
+    thumb: '/projects/graphvsrest.webp',
     tech: ['GraphQL', 'REST', 'Benchmarking'],
     projectLink: 'https://github.com/AryanAnand-ux/graphql-vs-rest-benchmark.git',
-    link: null,
     github: 'https://github.com/AryanAnand-ux/graphql-vs-rest-benchmark.git',
-    layoutClass: 'bento-third',
     caseFile: {
       headline: 'The quiet war between two API dialects, measured',
       lead: 'A technical paper that stops arguing preferences and starts reading numbers — GraphQL versus REST, run through the same workloads, timed on the same bench.',
@@ -151,12 +143,10 @@ export const projectsData = [
     title: 'File Converter',
     description:
       'Client-side PDF and image toolkit – split, merge, rotate, watermark, encrypt, and resize – that processes everything in-browser with no server uploads.',
-    thumb: '/projects/fileconvertor.png',
+    thumb: '/projects/fileconvertor.webp',
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     projectLink: 'https://file-converter-opal.vercel.app/',
-    link: null,
     github: 'https://github.com/AryanAnand-ux/file-converter.git',
-    layoutClass: 'bento-third',
     caseFile: {
       headline: 'A PDF toolkit that never sees your files',
       lead: 'Split, merge, rotate, watermark, encrypt, resize — all in the browser. The files arrive, the files depart; the server never meets them.',
@@ -186,12 +176,10 @@ export const projectsData = [
     title: 'HY Kero Flash Point Predictor',
     description:
       'Real-time full-stack ML application predicting Heavy Kerosene Flash Points from 41 live DCS sensor inputs using an L1-regularized regression pipeline and an integrated, secure AI chatbot.',
-    thumb: '/projects/hykero.png',
+    thumb: '/projects/hykero.webp',
     tech: ['Python', 'FastAPI', 'React', 'SQLite', 'Docker'],
     projectLink: 'https://hy-kero-predictor.vercel.app/',
-    link: 'https://hy-kero-predictor.vercel.app/',
     github: 'https://github.com/AryanAnand-ux/hy-kero-predictor.git',
-    layoutClass: 'bento-third',
     caseFile: {
       headline: 'Refinery instruments, read by a trained model',
       lead: 'Forty-one live DCS sensor streams, an L1-regularised regression pipeline, and a chatbot guarding the plant floor — predicting Heavy Kerosene Flash Points in real time.',
@@ -223,12 +211,10 @@ export const projectsData = [
     title: 'Global Cybersecurity Breach Analytics',
     description:
       'Power BI dashboard analyzing 365 global cybersecurity incidents, visualizing breach trends, attack vectors, and incident patterns to turn raw data into actionable insights.',
-    thumb: '/projects/globalcyber.png',
+    thumb: '/projects/globalcyber.webp',
     tech: ['Power BI', 'Data Analytics', 'Cybersecurity'],
     projectLink: 'https://github.com/AryanAnand-ux/Global-Cybersecurity-Breach-Analytics-PowerBI.git',
-    link: null,
     github: 'https://github.com/AryanAnand-ux/Global-Cybersecurity-Breach-Analytics-PowerBI.git',
-    layoutClass: 'bento-third',
     caseFile: {
       headline: 'Three hundred and sixty-five breaches, one dashboard',
       lead: 'A full year of global cyber incidents packed into a Power BI board — breach trends, attack vectors, and patterns that turn raw incident logs into intelligence.',
@@ -253,6 +239,13 @@ export const projectsData = [
     },
   },
 ];
+
+const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+export const exhibitLetter = (id) => {
+  const index = projectsData.findIndex((p) => p.id === id);
+  return index >= 0 ? LETTERS[index] ?? 'A' : 'A';
+};
 
 export const relatedBy = (project, all = projectsData) => {
   const others = all.filter((p) => p.id !== project.id);

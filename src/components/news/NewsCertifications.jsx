@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { newspaper } from '../../data/newspaper';
+import { newspaper, SITE } from '../../data/newspaper';
 import { certificatesData } from '../../data/certificates';
 import { Words } from './reveal';
 import { ArrowLeft, FileText, ExternalLink } from 'lucide-react';
@@ -14,7 +14,12 @@ const CertCard = ({ cert, index }) => (
       aria-label={`Open ${cert.title} certificate PDF`}
     >
       {cert.thumbnail ? (
-        <img src={cert.thumbnail} alt={`${cert.title} — certificate`} loading="lazy" />
+        <img
+          src={cert.thumbnail}
+          alt={`${cert.title} — certificate`}
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <div className="nw-cert-thumb-ph">
           <FileText size={30} />
@@ -107,7 +112,7 @@ const NewsCertifications = () => (
           </div>
           <a
             className="nw-btn nw-btn--solid nw-btn--lg"
-            href="/resume_5th_sem_v5.pdf"
+            href={SITE.resume}
             target="_blank"
             rel="noopener noreferrer"
           >

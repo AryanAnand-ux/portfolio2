@@ -1,12 +1,25 @@
 // Curated editorial content for the newspaper broadsheet build.
 // Content is Aryan's own — presented in the reference case-file style.
 
+export const SITE = {
+  origin: 'https://portfolio2-q1z5b488y-aryans-projects-144bd52a.vercel.app',
+  resume: '/resume_5th_sem_v5.pdf',
+  defaultTitle: 'Aryan Anand — The Personal Record of a Full-Stack Developer',
+};
+
+const issueDate = new Date().toLocaleDateString('en-GB', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
 export const newspaper = {
   mastheadName: 'Aryan Anand',
   tagline: 'The Personal Record of a B.Tech CSE (AI/ML) Student',
   edition: 'The Investigation Edition',
   established: 'Est. 2024',
-  issueDate: 'Sunday 20 September 2026',
+  issueDate,
   volume: 'Vol. III',
   contents: 'Selected Works & Papers',
   price: 'Price: One Chai',
@@ -33,14 +46,6 @@ export const heroContent = {
     { value: 'X2', label: 'Hackathon podiums this year' },
   ],
   photoAttribution: 'the subject',
-  quickIntel: [
-    { label: 'CGPA 8.57', value: 'Academic record', sub: 'B.Tech CSE (AI/ML) · JUET · 3rd year' },
-    { label: 'IST', value: 'Bhopal', sub: 'Remote-friendly, worldwide' },
-    { label: 'Open to', value: 'Internships & hackathons', sub: 'Software, research, and weekend builds' },
-    { label: 'Graduating', value: 'June 2028', sub: 'Currently in the 5th semester' },
-  ],
-  dispatchNote:
-    'Open to internships, freelance builds, and collaborative hackathon projects — typically answering within 24 hours.',
 };
 
 export const stackRows = [
@@ -109,7 +114,7 @@ export const achievements = [
     year: '2026',
     title: 'Elite Hack 1.0',
     honor: 'Winner',
-    blurb: 'First place among 100+ teams.', 
+    blurb: 'First place among 100+ teams.',
   },
   {
     year: '2026',
@@ -148,11 +153,11 @@ export const contactInfo = {
 export const footerContent = {
   bio: 'A third-year B.Tech CSE (AI/ML) student at JUET — a software & research intern at Indian Oil Corporation Limited, a Microsoft Elevate alumnus, and a two-time hackathon podium finisher in 2026. This broadsheet is hand-set in Caslon and Franklin.',
   sections: [
-    { label: 'Selected Works', href: '#work' },
-    { label: 'The Stack', href: '#stack' },
-    { label: 'The Career Ledger', href: '#career' },
+    { label: 'Selected Works', href: '/#work' },
+    { label: 'The Stack', href: '/#stack' },
+    { label: 'The Career Ledger', href: '/#career' },
     { label: 'Credentials', href: '/certifications' },
-    { label: 'Letters & Commissions', href: '#contact' },
+    { label: 'Letters & Commissions', href: '/#contact' },
   ],
   copyright: '© 2026 The Aryan Anand Times · All rights reserved · Printed in Bhopal',
 };

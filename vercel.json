@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/((?!cert/|assets/|projects/|.*\\.pdf|avatar\\.(png|webp)|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt).*)",
+      "source": "/((?!cert/|assets/|projects/|.*\\.pdf|avatar\\.png|avatar\\.webp|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt).*)",
       "destination": "/index.html"
     }
   ],
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "source": "/(avatar\\.(png|webp)|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt)",
+      "source": "/(avatar\\.png|avatar\\.webp|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt)",
       "headers": [
         {
           "key": "Cache-Control",

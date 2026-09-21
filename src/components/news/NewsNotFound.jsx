@@ -48,8 +48,8 @@ const NewsNotFound = () => (
           <div className="nw-notfound-copy">
             <p>
               A search of the morgue and the digital filing cabinets has turned up no verifiable
-              trace of the requested exhibit. The file may have been expunged, mis-shelved, or rel-
-              ocated under editorial discretion.
+              trace of the requested exhibit. The file may have been expunged, mis-shelved, or
+              relocated under editorial discretion.
             </p>
             <p className="nw-notfound-ref">
               Bureau Ref: <b>MISSING-DOC-00404</b> &middot; {contactInfo.deskCity}

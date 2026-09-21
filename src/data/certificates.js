@@ -48,7 +48,7 @@ export const certificatesData = [
     file: '/cert/rootacces2026Cert.pdf',
   },
   {
-    id: 'tata-crucable',
+    id: 'tata-crucible',
     title: 'Tata Crucible Certificate',
     issuer: 'Tata',
     date: '2026',

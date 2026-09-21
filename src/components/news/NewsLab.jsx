@@ -72,7 +72,7 @@ const NewsLab = () => (
         ))}
       </div>
 
-      <p className="nw-note">Findings are illustrative — what he reaches for day to day, not a ranking.</p>
+      <p className="nw-note">Findings are practical — what he reaches for day to day, not a ranking.</p>
     </div>
   </section>
 );

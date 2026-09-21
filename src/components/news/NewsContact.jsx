@@ -37,7 +37,7 @@ const NewsContact = () => {
           <div className="nw-contact-form">
             <h4 className="nw-contact-title">Put it in writing</h4>
             <p className="nw-contact-intro">
-              A project in mind, a role to fill, or just a good question - send it through and
+              A project in mind, a role to fill, or just a good question? Send it through and
               he&apos;ll get back to you.
             </p>
             <form onSubmit={handleSubmit}>

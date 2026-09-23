@@ -1,4 +1,28 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio2-red-psi.vercel.app"
+        }
+      ],
+      "destination": "https://aryan.runs-on.dev/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio2-q1z5b488y-aryans-projects-144bd52a.vercel.app"
+        }
+      ],
+      "destination": "https://aryan.runs-on.dev/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!cert/|assets/|projects/|.*\\.pdf|avatar\\.png|avatar\\.webp|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt).*)",

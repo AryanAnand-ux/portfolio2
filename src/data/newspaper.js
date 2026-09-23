@@ -2,7 +2,7 @@
 // Content is Aryan's own — presented in the reference case-file style.
 
 export const SITE = {
-  origin: 'https://portfolio2-q1z5b488y-aryans-projects-144bd52a.vercel.app',
+  origin: 'https://aryan.runs-on.dev',
   resume: '/Resume_5th_sem.pdf',
   defaultTitle: 'Aryan Anand — The Personal Record of a Full-Stack Developer',
 };

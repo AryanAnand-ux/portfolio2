@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '../icons';
 import { newspaper, contactInfo, footerContent } from '../../data/newspaper';
+import VisitorCount from './VisitorCount';
 
 const SectionLink = ({ item }) =>
   item.href.startsWith('/') ? (
@@ -65,6 +66,7 @@ const NewsFooter = () => (
 
       <div className="nw-footer-bar">
         <span>{footerContent.copyright}</span>
+        <VisitorCount />
         <div className="nw-footer-icons">
           <a
             href={contactInfo.github}

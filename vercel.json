@@ -21,6 +21,17 @@
       ],
       "destination": "https://aryan.runs-on.dev/$1",
       "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio-one-phi-97.vercel.app"
+        }
+      ],
+      "destination": "https://aryan.runs-on.dev/$1",
+      "permanent": true
     }
   ],
   "rewrites": [

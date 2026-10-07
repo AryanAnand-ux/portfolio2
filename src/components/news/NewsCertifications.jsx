@@ -17,6 +17,8 @@ const CertCard = ({ cert, index }) => (
         <img
           src={cert.thumbnail}
           alt={`${cert.title} — certificate`}
+          width="1200"
+          height="750"
           loading="lazy"
           decoding="async"
         />

@@ -4,7 +4,7 @@
 export const SITE = {
   origin: 'https://aryan.runs-on.dev',
   resume: '/Resume_5th_sem.pdf',
-  defaultTitle: 'Aryan Anand — The Personal Record of a Full-Stack Developer',
+  defaultTitle: 'Aryan Anand | Portfolio — Full-Stack Developer & AI Engineer (JUET)',
 };
 
 const issueDate = new Date().toLocaleDateString('en-GB', {

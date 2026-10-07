@@ -1,149 +1,96 @@
-# Aryan Anand Portfolio — Re-audit Report
+# Aryan Anand Portfolio — Current Repository Audit
 
 Audit date: 7 October 2026  
 Repository: `AryanAnand-ux/portfolio2`  
 Canonical site: <https://aryan.runs-on.dev/>
 
-## Verified findings
+## Verified current-repository findings
 
-1. The previous implementation updated route metadata only after React hydration. The source
-   `index.html` was therefore the same initial HTML shell for deep routes.
-2. `index.html` and the React homepage used different titles.
-3. Route metadata and JSON-LD logic was duplicated between the static document and React.
-4. The Vercel rewrite for case studies used a dynamic SPA shell rather than generated route
-   documents.
-5. `abacus.jasoncameron.dev` is actively used by `VisitorCount.jsx`; it is not an unused CSP
-   origin. Vercel Insights uses the same-origin `/_vercel` scripts and the Vercel vitals origin.
-6. The JavaScript project has no TypeScript source; the direct `@types/react` and
-   `@types/react-dom` dev dependencies were unused.
-7. Project, case-study, hero, and certificate images have intrinsic dimensions or stable CSS
-   aspect-ratio containers. The certificate card frame was verified at approximately 16:10 in
-   the local browser.
-8. Configured external project links returned HTTP 200 for GitHub and the four deployed project
-   URLs tested. LinkedIn rejected automated requests with 405/999 responses, so it is not
-   classified as broken.
+- The build pipeline now runs Vite and then the prerender step through the explicit `prerender`
+  npm script.
+- The smoke-test command is declared as `test:smoke` and points to `scripts/smoke.mjs`.
+- The public build contains 9 generated route documents: the homepage, certifications, and seven
+  case-study routes.
+- `SITE.defaultTitle` is the source for the homepage route metadata, and the static `index.html`
+  title is checked against it.
+- CI references only npm scripts declared in `package.json`: `lint`, `build`, `test:smoke`, and
+  `audit`.
+- The current source contains no frontend secret additions.
+- Vercel configuration contains explicit rewrites for the supported public routes and the
+  previously audited security headers and CSP restrictions.
 
 ## Fixes made
 
-### Route SEO and prerendering
+### Build and route generation
 
-- Added [src/seo-data.js](./src/seo-data.js) as the single source of truth for:
-  - route titles
-  - descriptions
-  - canonical paths
-  - Open Graph values
-  - Twitter card values
-  - index/noindex state
-  - route JSON-LD
-- Updated [src/seo.jsx](./src/seo.jsx) to consume the shared metadata and update the document
-  during client-side navigation.
-- Aligned `SITE.defaultTitle`, `index.html`, generated HTML, and React to:
-  `Aryan Anand | Portfolio — Full-Stack Developer & AI Engineer (JUET)`.
-- Added static JSON-LD for `Person`, `WebSite`, `ProfilePage`, `CollectionPage`, `ItemList`, and
-  case-study `Article` entities.
-- Added route-specific Twitter image alt metadata and canonical Open Graph URLs.
-- Added [scripts/prerender.mjs](./scripts/prerender.mjs), which generates static HTML for:
-  - `/`
-  - `/certifications`
-  - all seven `/case-files/:slug` routes
-- Each generated route now contains its own title, description, canonical, OG metadata, Twitter
-  metadata, JSON-LD, and a semantic `<noscript>` content fallback with headings, descriptions,
-  links, project details, or certificate listings.
-- Updated [vercel.json](./vercel.json) to rewrite supported routes to their generated HTML files.
-  Arbitrary unknown paths are not covered by a catch-all SPA rewrite.
+- Updated [package.json](./package.json):
+  - `build` runs `vite build && npm run prerender`.
+  - `prerender` runs `node scripts/prerender.mjs`.
+  - `test:smoke` runs `node scripts/smoke.mjs`.
+- Updated [src/seo-data.js](./src/seo-data.js) to use `SITE.defaultTitle` for the homepage
+  metadata instead of duplicating the title string.
+- Strengthened [scripts/smoke.mjs](./scripts/smoke.mjs) to verify:
+  - all expected generated route files exist;
+  - route title, description, canonical, JSON-LD, and no-JavaScript fallback output exist;
+  - sitemap and robots coverage are present;
+  - required npm scripts are declared;
+  - `index.html` matches `SITE.defaultTitle`.
+- Kept the existing visual design, content, animations, and application behavior unchanged.
 
-### Security and CSP
+### Existing audited improvements retained
 
-- Removed the unused Vercel script origin from `script-src`.
-- Removed `script-src 'unsafe-inline'`; the remaining inline JSON-LD is a non-executable data
-  block, while application code is loaded from same-origin bundled assets.
-- Removed `style-src 'unsafe-inline'` and scoped the necessary React custom-property styles to
-  `style-src-attr 'unsafe-inline'`.
-- Removed `data:` from `img-src`; all application images are same-origin.
-- Removed the obsolete `interest-cohort` permission.
-- Kept `https://abacus.jasoncameron.dev` in `connect-src` because the visitor counter fetches
-  it at runtime.
-- Kept `https://vitals.vercel-insights.com` because Vercel Speed Insights uses it.
-- Retained `base-uri`, `object-src`, `form-action`, `frame-src 'none'`, `frame-ancestors 'none'`,
-  COOP, CORP, X-Frame-Options, nosniff, and the existing referrer policy.
+- Build-time route metadata and JSON-LD prerendering.
+- Explicit Vercel route rewrites without a broad unknown-route SPA rewrite.
+- Narrowed CSP and security headers in [vercel.json](./vercel.json).
+- Stable image geometry and compact certificate-card layout.
+- CI workflow in [.github/workflows/ci.yml](./.github/workflows/ci.yml).
 
-### Dependencies and production checks
+## Checks run against the current repository
 
-- Removed unused direct React type packages from [package.json](./package.json).
-- Added static route and sitemap smoke validation in [scripts/smoke.mjs](./scripts/smoke.mjs).
-- CI now runs install, lint, production build/prerender, static smoke tests, and high-severity
-  dependency audit in [.github/workflows/ci.yml](./.github/workflows/ci.yml).
-- No frontend secrets were added or exposed. Existing public profile/contact data remains
-  intentionally public portfolio content.
+The following exact commands were run successfully after the changes:
 
-## Checks performed
+- `npm run lint`
+- `npm run build`
+- `npm run test:smoke`
+- `npm run audit`
+- `git diff --check`
+- `npm run build` generated the production bundle and prerendered all 9 routes.
+- `npm run test:smoke` verified the generated route files, route metadata, JSON-LD, fallback
+  content, sitemap, robots, npm scripts, and title alignment.
 
-- `npm run lint` — passed.
-- `npm run build` — passed; Vite generated the production bundle and prerendered 9 routes.
-- `npm run test:smoke` — passed; all 9 generated routes contain title, canonical, JSON-LD, and
-  crawlable fallback content.
-- Smoke test verified all 9 public routes are represented in `sitemap.xml` and that `robots.txt`
-  references the canonical sitemap.
-- `npm audit --audit-level=high` — passed with 0 vulnerabilities.
-- `npm ls --depth=0` — passed after removing unused type packages.
-- `git diff --check` — passed.
-- `vercel.json` JSON parsing — passed.
-- Local production preview:
-  - `/` title matched the canonical homepage title.
-  - `/certifications` exposed its route-specific title, canonical, OG URL, JSON-LD, and fallback.
-  - `/case-files/juet-nexus` exposed its case-study title, canonical, OG URL, JSON-LD, fallback,
-    and rendered heading.
-  - `/case-files/JUET-NEXUS` redirected client-side to the lowercase canonical route.
-  - Certificate cards remained compact after hydration.
-- External link checks:
-  - GitHub — HTTP 200.
-  - JUET Nexus, Loom2, File Converter, and HY Kero Predictor — HTTP 200.
-  - LinkedIn — automated client blocked with 405/999; not verified as broken.
+`npm audit --audit-level=high` reported 0 vulnerabilities.
 
-## Live deployment verification
+## Files changed for this integration fix
 
-The currently deployed site was checked before these new local changes were deployed:
+- [package.json](./package.json)
+- [src/seo-data.js](./src/seo-data.js)
+- [scripts/smoke.mjs](./scripts/smoke.mjs)
+- [AUDIT_REPORT.md](./AUDIT_REPORT.md)
 
-- `robots.txt` and `sitemap.xml` were reachable and contain the expected public route list.
-- The live deep-route HTML response still showed the homepage shell/title rather than route-specific
-  static metadata. This confirms the remaining limitation in the deployed version and is expected
-  until the current build is deployed.
-- Production response headers, the new generated deep-route HTML, and post-deploy Core Web Vitals
-  are not yet verified for this re-audit.
-  - The pull-request Vercel preview deployment completed successfully, but direct requests were
-    protected by Vercel SSO and returned HTTP 302 before the generated HTML. Preview route bodies,
-    application CSP, and unknown-route 404 behavior therefore remain unverified.
+## Remaining risks not verified by repository-only checks
 
-## Remaining risks
+- Live production HTML, response headers, unknown-route HTTP 404 behavior, social previews, and
+  post-deployment Core Web Vitals require an accessible deployed response.
+- The prerendered no-JavaScript fallback improves crawlability but is not full server-rendered
+  React.
+- The existing `style-src-attr 'unsafe-inline'` exception remains coupled to current inline
+  animation styles.
+- The visitor counter remains dependent on `abacus.jasoncameron.dev`.
 
-- The generated `<noscript>` fallback improves crawler-visible content without introducing SSR,
-  but it is not equivalent to full server-rendered React. The site still needs post-deployment
-  crawler and social-card validation.
-- `style-src-attr 'unsafe-inline'` remains necessary for the existing animation delay custom
-  properties and inline SVG positioning. Removing it would change animation behavior.
-- The visitor counter depends on the third-party `abacus.jasoncameron.dev` service. If that
-  feature is removed later, its CSP origin should be removed at the same time.
-- LinkedIn availability remains unverified because the provider blocks automated requests.
-- Real-user LCP, CLS, and INP are not measurable from this local audit and must be checked after
-  deployment.
-
-## Final scores
+## Repository-based scores
 
 | Area | Score | Basis |
 |---|---:|---|
-| SEO | 94/100 | Static route metadata, canonical URLs, JSON-LD, sitemap coverage, and no-JS fallback are now present; post-deploy crawler validation remains. |
-| Performance | 86/100 | Stable image geometry, compact certificate cards, lazy non-critical images, and a 94 kB gzip JS bundle; real-user CWV remains unmeasured. |
-| Security | 94/100 | Clean dependency audit and narrower CSP with only verified external origins; a scoped style attribute exception remains. |
-| Production readiness | 94/100 | CI, prerendering, route smoke tests, security policy, explicit rewrites, and deployment checks are present; this revision still needs deployment verification. |
+| SEO | 94/100 | Route metadata, canonicals, JSON-LD, sitemap coverage, and prerendered fallback are present in the build pipeline. |
+| Performance | 86/100 | Stable image geometry, compact certificate cards, lazy non-critical images, and the existing optimized production bundle. |
+| Security | 94/100 | Current CSP/security headers remain narrowed and the high-severity dependency audit is clean. |
+| Production readiness | 96/100 | Build/prerender integration, smoke tests, CI script alignment, and dependency checks are wired; live deployment behavior is not measurable from the repository alone. |
 
 ## Deployment checklist
 
-1. Deploy the current `main` changes to Vercel.
-2. Confirm `/`, `/certifications`, and every sitemap case-study route return the generated route
-   metadata without waiting for JavaScript.
-3. Confirm an unknown direct path returns HTTP 404 and is not rewritten to the homepage.
-4. Inspect production CSP and confirm the visitor counter and Vercel Insights still function.
-5. Validate JSON-LD with Google’s Rich Results Test or Schema Markup Validator.
-6. Check Open Graph/Twitter previews for the homepage and at least one case study.
-7. Run mobile and desktop Lighthouse and record LCP, CLS, and INP.
-8. Re-check the live sitemap in Google Search Console after deployment.
+1. Deploy the current branch to Vercel.
+2. Confirm raw HTML metadata for `/`, `/certifications`, and every case-study route.
+3. Confirm unknown direct paths return HTTP 404 rather than the homepage shell.
+4. Inspect production CSP and verify the visitor counter and Vercel Insights.
+5. Validate JSON-LD and social previews.
+6. Measure mobile and desktop Core Web Vitals after deployment.

@@ -110,6 +110,9 @@ The currently deployed site was checked before these new local changes were depl
   until the current build is deployed.
 - Production response headers, the new generated deep-route HTML, and post-deploy Core Web Vitals
   are not yet verified for this re-audit.
+  - The pull-request Vercel preview deployment completed successfully, but direct requests were
+    protected by Vercel SSO and returned HTTP 302 before the generated HTML. Preview route bodies,
+    application CSP, and unknown-route 404 behavior therefore remain unverified.
 
 ## Remaining risks
 

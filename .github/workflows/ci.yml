@@ -25,5 +25,7 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Static route smoke test
+        run: npm run test:smoke
       - name: Dependency audit
         run: npm run audit

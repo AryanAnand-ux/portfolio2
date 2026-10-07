@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "vite build && npm run prerender",
     "check": "npm run lint && npm run build",
     "lint": "eslint .",
+    "prerender": "node scripts/prerender.mjs",
     "preview": "vite preview",
     "audit": "npm audit --audit-level=high",
     "test:smoke": "node scripts/smoke.mjs"

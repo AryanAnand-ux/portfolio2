@@ -5,6 +5,7 @@ import { certificatesData } from './data/certificates.js';
 export const DEFAULT_DESCRIPTION =
   'Official portfolio of Aryan Anand, a Full-Stack Developer and AI/ML Engineer at JUET. Explore shipped products, research, internships, and certifications.';
 export const SITE_ORIGIN = SITE.origin;
+export const DEFAULT_TITLE = SITE.defaultTitle;
 
 const PERSON_ID = `${SITE.origin}/#person`;
 const WEBSITE_ID = `${SITE.origin}/#website`;
@@ -68,7 +69,7 @@ export const getRouteMetadata = (pathname) => {
 
   if (normalizedPath === '/') {
     return {
-      title: 'Aryan Anand | Portfolio — Full-Stack Developer & AI Engineer (JUET)',
+      title: DEFAULT_TITLE,
       description: DEFAULT_DESCRIPTION,
       type: 'profile',
       image: `${SITE.origin}/avatar.webp`,

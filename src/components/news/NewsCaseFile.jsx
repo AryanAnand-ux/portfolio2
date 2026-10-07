@@ -9,6 +9,8 @@ const Shot = ({ project }) =>
       className="nw-shot-img"
       src={project.thumb}
       alt={`${project.title} interface`}
+      width="1200"
+      height="800"
       decoding="async"
     />
   ) : (

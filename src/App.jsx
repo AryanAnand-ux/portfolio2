@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useParams, Navigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './components/news/news.css';
@@ -22,8 +16,8 @@ import NewsFooter from './components/news/NewsFooter';
 import NewsCaseFile from './components/news/NewsCaseFile';
 import NewsCertifications from './components/news/NewsCertifications';
 import NewsNotFound from './components/news/NewsNotFound';
-import { SITE } from './data/newspaper';
 import { projectsData } from './data/projects';
+import RouteMetadata from './seo';
 
 const Home = ({ introDone, onIntroDone }) => (
   <>
@@ -51,29 +45,6 @@ const SubPage = ({ children }) => (
     <NewsFooter />
   </>
 );
-
-const titleFor = (pathname) => {
-  if (pathname === '/') return SITE.defaultTitle;
-  if (pathname === '/certifications') return 'Papers on File — Aryan Anand';
-  if (pathname.startsWith('/case-files/')) {
-    const slug = pathname.split('/')[2];
-    const project = projectsData.find((p) => p.id === slug);
-    return project
-      ? `${project.title} — Case File · Aryan Anand`
-      : '404 — Missing Case File · Aryan Anand';
-  }
-  return '404 — Missing Case File · Aryan Anand';
-};
-
-const DocumentTitle = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    document.title = titleFor(pathname);
-  }, [pathname]);
-
-  return null;
-};
 
 const ScrollManager = () => {
   const { pathname, hash } = useLocation();
@@ -178,7 +149,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <DocumentTitle />
+      <RouteMetadata />
       <ScrollManager />
       <RevealObserver />
       <RouteConfig introDone={introDone} onIntroDone={handleIntroDone} />
@@ -241,7 +212,11 @@ const RouteConfig = ({ introDone, onIntroDone }) => (
 
 const CaseFileRoute = () => {
   const { slug } = useParams();
-  const project = projectsData.find((p) => p.id === slug);
+  const canonicalSlug = slug?.toLowerCase();
+  const project = projectsData.find((p) => p.id === canonicalSlug);
+  if (slug !== canonicalSlug && project) {
+    return <Navigate replace to={`/case-files/${canonicalSlug}`} />;
+  }
   if (!project) return <NewsNotFound />;
   return <NewsCaseFile project={project} />;
 };

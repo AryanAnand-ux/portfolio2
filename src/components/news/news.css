@@ -2177,12 +2177,13 @@ body.is-locked {
   overflow: hidden;
   border: 1px solid var(--rule);
   background: var(--paper-bright);
+  aspect-ratio: 16 / 10;
 }
 
 .nw-cert-thumb img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   filter: grayscale(1) contrast(1.02);

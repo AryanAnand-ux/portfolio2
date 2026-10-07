@@ -35,10 +35,9 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/((?!cert/|assets/|projects/|.*\\.pdf|avatar\\.png|avatar\\.webp|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/certifications", "destination": "/index.html" },
+    { "source": "/case-files/:slug", "destination": "/index.html" }
   ],
   "headers": [
     {
@@ -62,7 +61,15 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://vitals.vercel-insights.com https://abacus.jasoncameron.dev; frame-src 'self' blob:; frame-ancestors 'none';"
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' mailto:; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://vitals.vercel-insights.com https://abacus.jasoncameron.dev; frame-src 'none'; frame-ancestors 'none';"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
         }
       ]
     },

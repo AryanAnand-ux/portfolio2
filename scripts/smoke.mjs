@@ -40,7 +40,32 @@ for (const route of routes) {
   ) {
     throw new Error(`Missing SEO output in ${route}`);
   }
+
+  // The 1.4 MB avatar PNG must never ship as a page icon again.
+  if (html.includes('href="/avatar.png"')) {
+    throw new Error(`${route} references the oversized avatar.png as an icon`);
+  }
+  if (!html.includes('<html lang="en-IN">') || !html.includes('property="og:locale"')) {
+    throw new Error(`${route} is missing locale metadata`);
+  }
+
+  // The LCP preload must name an image the route actually renders.
+  const preload = /<link rel="preload" as="image" href="([^"]+)"/.exec(html)?.[1];
+  if (route === '/certifications' && preload) {
+    throw new Error('/certifications preloads an image it does not show');
+  }
+  if (route === '/' && preload !== '/avatar.webp') {
+    throw new Error(`Home preloads "${preload}" instead of the hero portrait`);
+  }
+  if (route.startsWith('/case-files/')) {
+    const project = projectsData.find((item) => route === `/case-files/${item.id}`);
+    if (preload !== project.thumb) {
+      throw new Error(`${route} preloads "${preload}" instead of its plate image`);
+    }
+  }
 }
+
+console.log('Verified per-route icon, locale and LCP preload output.');
 
 console.log(`Verified static SEO output for ${routes.length} routes.`);
 console.log('Verified required npm scripts and SITE.defaultTitle alignment.');
@@ -51,6 +76,12 @@ for (const route of routes) {
   if (!sitemap.includes(`<loc>${url}</loc>`)) {
     throw new Error(`Missing ${url} from sitemap.xml`);
   }
+}
+
+const urlEntryCount = (sitemap.match(/<url>/g) ?? []).length;
+const lastmodCount = (sitemap.match(/<lastmod>/g) ?? []).length;
+if (urlEntryCount !== routes.length || lastmodCount !== routes.length) {
+  throw new Error(`sitemap.xml must stamp <lastmod> on all ${routes.length} urls`);
 }
 
 const robots = await readFile(path.join(dist, 'robots.txt'), 'utf8');

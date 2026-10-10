@@ -107,7 +107,20 @@
       ]
     },
     {
-      "source": "/(avatar\\.png|avatar\\.webp|favicon\\.svg|robots\\.txt|sitemap\\.xml|llms\\.txt)",
+      "source": "/(resume_5th_sem_v5\\.pdf)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(avatar\\.png|avatar\\.webp|favicon\\.svg|icon-192\\.png|apple-touch-icon\\.png|robots\\.txt|sitemap\\.xml|llms\\.txt)",
       "headers": [
         {
           "key": "Cache-Control",

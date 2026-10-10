@@ -3,6 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 const LENS = 184;
 const SCALE = 1.6;
 
+// If the magnifier has not located the subject by this point the intro lifts
+// anyway, so nothing is ever left stranded behind the overlay.
+const INTRO_FALLBACK_MS = 4000;
+
 const SKELETON_BARS = ['', 's', '', 'x', '', 's', '', '', 's', '', 'x', ''];
 
 const Column = ({ title, bars, children }) => (
@@ -131,10 +135,17 @@ const NewsIntro = ({ onDone }) => {
       if (event.key === 'Escape') skip();
     };
 
+    // Fallback: the overlay only lifts when the magnifier finds the subject, on
+    // Escape, or via the Skip button. A visitor who never moves a pointer — or a
+    // crawler that renders without dispatching input events — would otherwise sit
+    // behind a fixed full-screen panel with scroll locked, hiding the whole page.
+    const bail = window.setTimeout(skip, INTRO_FALLBACK_MS);
+
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('pointerdown', onPointerDown, { passive: true });
     window.addEventListener('keydown', onKey);
     return () => {
+      window.clearTimeout(bail);
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerdown', onPointerDown);
       window.removeEventListener('keydown', onKey);

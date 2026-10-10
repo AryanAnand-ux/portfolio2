@@ -32,6 +32,19 @@ const replaceCanonical = (html, canonical) => {
   return canonical ? html.replace(pattern, `$1${escapeHtml(canonical)}$2`) : html;
 };
 
+// The shared template preloads the hero portrait for the home page. Emitting that
+// preload on sub-pages wastes a high-priority request on an image they never show.
+const replaceLcpPreload = (html, route) => {
+  if (route === '/') return html;
+  if (route === '/certifications') {
+    return html.replace(/[ \t]*<!-- LCP image preload -->\r?\n[ \t]*<link rel="preload" as="image"[^>]*\/>\r?\n?/, '');
+  }
+  const project = projectsData.find((item) => route === `/case-files/${item.id}`);
+  const image = project?.thumb ? project.thumb : '/avatar.webp';
+  const pattern = /(<link\s+rel="preload"\s+as="image"\s+href=")[^"]*(")/i;
+  return html.replace(pattern, `$1${escapeHtml(image)}$2`);
+};
+
 const addJsonLd = (html, jsonLd) => {
   if (!jsonLd) return html;
   const serialized = JSON.stringify(jsonLd).replaceAll('<', '\\u003c');
@@ -91,6 +104,7 @@ const renderRoute = (template, route) => {
   html = replaceMeta(html, 'name', 'twitter:image', metadata.image);
   html = replaceMeta(html, 'name', 'twitter:image:alt', metadata.imageAlt);
   html = replaceCanonical(html, canonical);
+  html = replaceLcpPreload(html, route);
   html = addJsonLd(html, getJsonLd(metadata));
   return addNoScriptFallback(html, route);
 };
@@ -98,11 +112,25 @@ const renderRoute = (template, route) => {
 const outputPathFor = (route) =>
   route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.slice(1), 'index.html');
 
+// Google ignores changefreq/priority but does read <lastmod>. Stamping the build
+// date gives recrawl signals a real value instead of the placeholder the source
+// sitemap ships with, so refreshed content is picked up on the next crawl.
+const stampSitemapLastmod = async () => {
+  const sitemapPath = path.join(dist, 'sitemap.xml');
+  let xml = await readFile(sitemapPath, 'utf8');
+  if (/<lastmod>/.test(xml)) return;
+  const lastmod = new Date().toISOString().slice(0, 10);
+  xml = xml.replace(/(<url>)(?!\s*<lastmod>)/g, `$1\n    <lastmod>${lastmod}</lastmod>`);
+  await writeFile(sitemapPath, xml);
+};
+
 const template = await readFile(templatePath, 'utf8');
 for (const route of routes) {
   const outputPath = outputPathFor(route);
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, renderRoute(template, route));
 }
+
+await stampSitemapLastmod();
 
 console.log(`Prerendered ${routes.length} public routes.`);

@@ -28,7 +28,7 @@
 ## Projects
 
 - AI-Parametric CAD Workbench: Full-stack tool turning natural-language descriptions into interactive 3D CAD models (FastAPI, React, Three.js, Gemini API, Docker)
-- JUET Nexus: Proxy dashboard for university ERP with low-latency data access (TypeScript, Next.js, Fastify, Redis)
+- JUET Nexus: Modern student portal and real-time attendance tracker for JUET with safe-skip attendance calculations, exam schedules and GPA analytics over a CampusLynx login (TypeScript, Next.js 15, React 19, Tailwind CSS, Fastify)
 - Loom2: AI-powered digital wardrobe with weather-aware outfit recommendations (React, Node.js, AI APIs)
 - GraphQL vs REST Benchmark: Research paper benchmarking API performance and developer experience
 - File Converter: Client-side PDF/image toolkit with in-browser processing (Next.js, TypeScript, Tailwind CSS)

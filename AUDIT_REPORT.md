@@ -6,8 +6,7 @@ Canonical site: <https://aryan.runs-on.dev/>
 
 ## Verified current-repository findings
 
-- The build pipeline now runs Vite and then the prerender step through the explicit `prerender`
-  npm script.
+- The build pipeline now runs Vite and then `node scripts/prerender.mjs`.
 - The smoke-test command is declared as `test:smoke` and points to `scripts/smoke.mjs`.
 - The public build contains 9 generated route documents: the homepage, certifications, and seven
   case-study routes.
@@ -24,7 +23,7 @@ Canonical site: <https://aryan.runs-on.dev/>
 ### Build and route generation
 
 - Updated [package.json](./package.json):
-  - `build` runs `vite build && npm run prerender`.
+  - `build` runs `vite build && node scripts/prerender.mjs`.
   - `prerender` runs `node scripts/prerender.mjs`.
   - `test:smoke` runs `node scripts/smoke.mjs`.
 - Updated [src/seo-data.js](./src/seo-data.js) to use `SITE.defaultTitle` for the homepage
